@@ -131,6 +131,7 @@ View::View(Session &session, bool is_main_view, QMainWindow *parent) :
 	splitter_(new QSplitter()),
 	header_was_shrunk_(false),  // The splitter remains unchanged after a reset, so this goes here
 	sticky_scrolling_(false),  // Default setting is set in MainWindow::setup_ui()
+	align_on_trigger_(false),
 	scroll_needs_defaults_(true)
 {
 	QVBoxLayout *root_layout = new QVBoxLayout(this);
@@ -896,6 +897,11 @@ void View::set_scale_offset(double scale, const Timestamp& offset)
 		if (sticky_scrolling_) {
 			sticky_scrolling_ = false;
 			sticky_scrolling_changed(false);
+		}
+
+		if (align_on_trigger_) {
+			align_on_trigger_ = false;
+			align_on_trigger_changed(false);
 		}
 
 		if (always_zoom_to_fit_) {
@@ -2001,6 +2007,8 @@ void View::capture_state_updated(int state)
 		// Enable sticky scrolling if the setting is enabled
 		sticky_scrolling_ = !restoring_state_ &&
 			settings.value(GlobalSettings::Key_View_StickyScrolling).toBool();
+		align_on_trigger_ = !restoring_state_ &&
+			settings.value(GlobalSettings::Key_View_AlignScrollOnTrigger).toBool();
 
 		// Reset all traces to segment 0
 		current_segment_ = 0;
@@ -2079,16 +2087,35 @@ void View::perform_delayed_view_update()
 {
 	if (always_zoom_to_fit_) {
 		zoom_fit(true);
-	} else if (sticky_scrolling_) {
-		// Make right side of the view sticky
-		double length = 0;
-		Timestamp offset;
-		get_scroll_layout(length, offset);
+	} else {
+		if (align_on_trigger_) {
+			double length = 0;
+			Timestamp start = get_time_extents().first, offset;
+			const QSize areaSize = viewport_->size();
+			get_scroll_layout(length, offset);
+			for(int i = trigger_markers_.size() - 1 ; i >= 0 ; --i)
+			{	// convert trigger position into document coordinates
+				pv::util::Timestamp dt = trigger_markers_[i]->time() - start;
+				double trgoffset = (dt / scale_).convert_to<double>() - (areaSize.width() / 2);
+				if((trgoffset + areaSize.width()) <= length)
+				{	// ok to align
+					set_offset(scale_ * trgoffset);
+					goto alignment_done;
+				}
+			}
+		}
+		if (sticky_scrolling_) {
+			// Make right side of the view sticky
+			double length = 0;
+			Timestamp offset;
+			get_scroll_layout(length, offset);
 
-		const QSize areaSize = viewport_->size();
-		length = max(length - areaSize.width(), 0.0);
+			const QSize areaSize = viewport_->size();
+			length = max(length - areaSize.width(), 0.0);
 
-		set_offset(scale_ * length);
+			set_offset(scale_ * length);
+		}
+	alignment_done: ;
 	}
 
 	determine_time_unit();

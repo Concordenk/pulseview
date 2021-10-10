@@ -58,6 +58,7 @@ const QString GlobalSettings::Key_View_ZoomToFitAfterAcq = "View_ZoomToFitAfterA
 const QString GlobalSettings::Key_View_TriggerIsZeroTime = "View_TriggerIsZeroTime";
 const QString GlobalSettings::Key_View_ColoredBG = "View_ColoredBG";
 const QString GlobalSettings::Key_View_StickyScrolling = "View_StickyScrolling";
+const QString GlobalSettings::Key_View_AlignScrollOnTrigger = "View_AlignScrollOnTrigger";
 const QString GlobalSettings::Key_View_AllowVerticalDragging = "View_AllowVerticalDragging";
 const QString GlobalSettings::Key_View_ShowSamplingPoints = "View_ShowSamplingPoints";
 const QString GlobalSettings::Key_View_FillSignalHighAreas = "View_FillSignalHighAreas";

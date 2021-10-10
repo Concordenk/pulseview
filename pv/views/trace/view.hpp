@@ -346,6 +346,8 @@ Q_SIGNALS:
 
 	void sticky_scrolling_changed(bool state);
 
+	void align_on_trigger_changed(bool state);
+
 	void always_zoom_to_fit_changed(bool state);
 
 	/// Emitted when the tick_prefix changed.
@@ -539,6 +541,7 @@ private:
 	bool header_was_shrunk_;
 
 	bool sticky_scrolling_;
+	bool align_on_trigger_;
 	bool colored_bg_;
 	bool always_zoom_to_fit_;
 
