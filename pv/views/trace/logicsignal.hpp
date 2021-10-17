@@ -116,7 +116,7 @@ protected:
 	void init_trigger_actions(QWidget *parent);
 
 	const vector<int32_t> get_trigger_types() const;
-	QAction* action_from_trigger_type(const sigrok::TriggerMatchType *type);
+	virtual QAction* action_from_trigger_type(const sigrok::TriggerMatchType *type);
 	const sigrok::TriggerMatchType* trigger_type_from_action(
 		QAction *action);
 	void populate_popup_form(QWidget *parent, QFormLayout *form);
@@ -131,6 +131,7 @@ protected Q_SLOTS:
 	void on_setting_changed(const QString &key, const QVariant &value);
 
 	void on_trigger();
+	void on_trigger_value(double value);
 
 	void on_signal_height_changed(int height);
 
@@ -142,6 +143,7 @@ protected:
 	QSpinBox *signal_height_sb_;
 
 	const sigrok::TriggerMatchType *trigger_match_;
+	float trigger_value_;
 	const vector<int32_t> trigger_types_;
 	QToolBar *trigger_bar_;
 	QAction *trigger_none_;
@@ -150,6 +152,8 @@ protected:
 	QAction *trigger_falling_;
 	QAction *trigger_low_;
 	QAction *trigger_change_;
+	QAction *trigger_over_;
+	QAction *trigger_under_;
 
 	static QCache<QString, const QIcon> icon_cache_;
 	static QCache<QString, const QPixmap> pixmap_cache_;

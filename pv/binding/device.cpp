@@ -144,6 +144,7 @@ Device::Device(shared_ptr<sigrok::Configurable> configurable) :
 			break;
 
 		case SR_CONF_AVG_SAMPLES:
+		case SR_CONF_HOLDOFF:
 			if (capabilities.count(Capability::LIST))
 				bind_enum(descr, "", key, capabilities, get, set, print_averages);
 			else

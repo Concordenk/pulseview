@@ -542,6 +542,7 @@ private:
 
 	bool sticky_scrolling_;
 	bool align_on_trigger_;
+	int scroll_trigger_pos_;
 	bool colored_bg_;
 	bool always_zoom_to_fit_;
 

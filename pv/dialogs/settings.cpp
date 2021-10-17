@@ -323,6 +323,14 @@ QWidget *Settings::get_view_settings_form(QWidget *parent) const
 		SLOT(on_view_alignScrollOnTrigger_changed(int)));
 	trace_view_layout->addRow(tr("Center on last trigger"), cb);
 
+	QSpinBox *scroll_trigger_sb = new QSpinBox();
+	scroll_trigger_sb->setRange(0, 100);
+	scroll_trigger_sb->setSuffix(tr(" %"));
+	scroll_trigger_sb->setValue(settings.value(GlobalSettings::Key_View_ScrollTriggerPosition).toInt());
+	connect(scroll_trigger_sb, SIGNAL(valueChanged(int)), this,
+		SLOT(on_view_scrollTrigger_changed(int)));
+	trace_view_layout->addRow(tr("Window trigger position"), scroll_trigger_sb);
+
 	cb = create_checkbox(GlobalSettings::Key_View_AllowVerticalDragging,
 		SLOT(on_view_allowVerticalDragging_changed(int)));
 	trace_view_layout->addRow(tr("Allow &vertical dragging in the view area"), cb);
@@ -732,6 +740,12 @@ void Settings::on_view_alignScrollOnTrigger_changed(int state)
 {
 	GlobalSettings settings;
 	settings.setValue(GlobalSettings::Key_View_AlignScrollOnTrigger, state ? true : false);
+}
+
+void Settings::on_view_scrollTrigger_changed(int value)
+{
+	GlobalSettings settings;
+	settings.setValue(GlobalSettings::Key_View_ScrollTriggerPosition, value);
 }
 
 void Settings::on_view_allowVerticalDragging_changed(int state)

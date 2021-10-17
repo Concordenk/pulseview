@@ -79,8 +79,8 @@ const char* LogicSignal::TriggerMarkerIcons[8] = {
 	":/icons/trigger-marker-rising.svg",
 	":/icons/trigger-marker-falling.svg",
 	":/icons/trigger-marker-change.svg",
-	nullptr,
-	nullptr
+	":/icons/trigger-marker-high.svg",
+	":/icons/trigger-marker-low.svg",
 };
 
 QCache<QString, const QIcon> LogicSignal::icon_cache_;
@@ -94,7 +94,9 @@ LogicSignal::LogicSignal(pv::Session &session, shared_ptr<data::SignalBase> base
 	trigger_high_(nullptr),
 	trigger_falling_(nullptr),
 	trigger_low_(nullptr),
-	trigger_change_(nullptr)
+	trigger_change_(nullptr),
+	trigger_over_(nullptr),
+	trigger_under_(nullptr)
 {
 	GlobalSettings settings;
 	signal_height_ = settings.value(GlobalSettings::Key_View_DefaultLogicHeight).toInt();
@@ -110,11 +112,15 @@ LogicSignal::LogicSignal(pv::Session &session, shared_ptr<data::SignalBase> base
 	/* Populate this channel's trigger setting with whatever we
 	 * find in the current session trigger, if anything. */
 	trigger_match_ = nullptr;
+	trigger_value_ = 0;
 	if (shared_ptr<Trigger> trigger = session_.session()->trigger())
 		for (auto stage : trigger->stages())
 			for (auto match : stage->matches())
 				if (match->channel() == base_->channel())
+				{
 					trigger_match_ = match->type();
+					trigger_value_ = match->value();
+				}
 }
 
 std::map<QString, QVariant> LogicSignal::save_settings() const
@@ -448,6 +454,17 @@ void LogicSignal::init_trigger_actions(QWidget *parent)
 		tr("Trigger on rising or falling edge"), parent);
 	trigger_change_->setCheckable(true);
 	connect(trigger_change_, SIGNAL(triggered()), this, SLOT(on_trigger()));
+
+	trigger_over_ = new QAction(*get_icon(":/icons/trigger-high.svg"),
+		tr("Trigger OVER value"), parent);
+	trigger_over_->setCheckable(true);
+	connect(trigger_over_, SIGNAL(triggered()), this, SLOT(on_trigger()));
+
+	trigger_under_ = new QAction(*get_icon(":/icons/trigger-low.svg"),
+		tr("Trigger UNDER value"), parent);
+	trigger_under_->setCheckable(true);
+	connect(trigger_under_, SIGNAL(triggered()), this, SLOT(on_trigger()));
+
 }
 
 const vector<int32_t> LogicSignal::get_trigger_types() const
@@ -502,7 +519,7 @@ QAction* LogicSignal::action_from_trigger_type(const TriggerMatchType *type)
 			action = trigger_change_;
 			break;
 		default:
-			assert(false);
+			break;
 		}
 	}
 
@@ -521,6 +538,10 @@ const TriggerMatchType *LogicSignal::trigger_type_from_action(QAction *action)
 		return TriggerMatchType::FALLING;
 	else if (action == trigger_change_)
 		return TriggerMatchType::EDGE;
+	else if (action == trigger_over_)
+		return TriggerMatchType::OVER;
+	else if (action == trigger_under_)
+		return TriggerMatchType::UNDER;
 	else
 		return nullptr;
 }
@@ -594,7 +615,7 @@ void LogicSignal::modify_trigger()
 			new_trigger->add_stage();
 
 		new_trigger->stages().back()->add_match(base_->channel(),
-			trigger_match_);
+			trigger_match_, trigger_value_);
 	}
 
 	session_.session()->set_trigger(
@@ -654,6 +675,12 @@ void LogicSignal::on_trigger()
 	action->setChecked(true);
 	trigger_match_ = trigger_type_from_action(action);
 
+	modify_trigger();
+}
+
+void LogicSignal::on_trigger_value(double value)
+{
+	trigger_value_ = value;
 	modify_trigger();
 }
 

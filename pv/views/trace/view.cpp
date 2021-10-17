@@ -132,6 +132,7 @@ View::View(Session &session, bool is_main_view, QMainWindow *parent) :
 	header_was_shrunk_(false),  // The splitter remains unchanged after a reset, so this goes here
 	sticky_scrolling_(false),  // Default setting is set in MainWindow::setup_ui()
 	align_on_trigger_(false),
+	scroll_trigger_pos_(50),
 	scroll_needs_defaults_(true)
 {
 	QVBoxLayout *root_layout = new QVBoxLayout(this);
@@ -899,10 +900,10 @@ void View::set_scale_offset(double scale, const Timestamp& offset)
 			sticky_scrolling_changed(false);
 		}
 
-		if (align_on_trigger_) {
+		/*if (align_on_trigger_) {
 			align_on_trigger_ = false;
 			align_on_trigger_changed(false);
-		}
+		}*/
 
 		if (always_zoom_to_fit_) {
 			always_zoom_to_fit_ = false;
@@ -2009,6 +2010,7 @@ void View::capture_state_updated(int state)
 			settings.value(GlobalSettings::Key_View_StickyScrolling).toBool();
 		align_on_trigger_ = !restoring_state_ &&
 			settings.value(GlobalSettings::Key_View_AlignScrollOnTrigger).toBool();
+		scroll_trigger_pos_ = settings.value(GlobalSettings::Key_View_ScrollTriggerPosition).toInt();
 
 		// Reset all traces to segment 0
 		current_segment_ = 0;
@@ -2096,7 +2098,7 @@ void View::perform_delayed_view_update()
 			for(int i = trigger_markers_.size() - 1 ; i >= 0 ; --i)
 			{	// convert trigger position into document coordinates
 				pv::util::Timestamp dt = trigger_markers_[i]->time() - start;
-				double trgoffset = (dt / scale_).convert_to<double>() - (areaSize.width() / 2);
+				double trgoffset = (dt / scale_).convert_to<double>() - (areaSize.width() * scroll_trigger_pos_ / 100);
 				if((trgoffset + areaSize.width()) <= length)
 				{	// ok to align
 					set_offset(scale_ * trgoffset);

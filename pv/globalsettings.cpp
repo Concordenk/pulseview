@@ -59,6 +59,7 @@ const QString GlobalSettings::Key_View_TriggerIsZeroTime = "View_TriggerIsZeroTi
 const QString GlobalSettings::Key_View_ColoredBG = "View_ColoredBG";
 const QString GlobalSettings::Key_View_StickyScrolling = "View_StickyScrolling";
 const QString GlobalSettings::Key_View_AlignScrollOnTrigger = "View_AlignScrollOnTrigger";
+const QString GlobalSettings::Key_View_ScrollTriggerPosition ="View_ScrollTriggerPosition";
 const QString GlobalSettings::Key_View_AllowVerticalDragging = "View_AllowVerticalDragging";
 const QString GlobalSettings::Key_View_ShowSamplingPoints = "View_ShowSamplingPoints";
 const QString GlobalSettings::Key_View_FillSignalHighAreas = "View_FillSignalHighAreas";
@@ -178,6 +179,10 @@ void GlobalSettings::set_defaults_where_needed()
 	// Default theme is bright, so use its color scheme if undefined
 	if (!contains(Key_View_CursorFillColor))
 		set_bright_theme_default_colors();
+	
+	// ScrollTrigger position
+	if (!contains(Key_View_ScrollTriggerPosition))
+		setValue(Key_View_ScrollTriggerPosition, 50);
 }
 
 void GlobalSettings::set_bright_theme_default_colors()

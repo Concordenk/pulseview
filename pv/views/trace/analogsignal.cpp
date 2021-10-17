@@ -33,6 +33,8 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QString>
+#include <QToolBar>
+#include <QDoubleSpinBox>
 
 #include "analogsignal.hpp"
 #include "logicsignal.hpp"
@@ -66,6 +68,7 @@ using pv::data::LogicSegment;
 using pv::data::SignalBase;
 using pv::util::SIPrefix;
 using pv::util::determine_value_prefix;
+using sigrok::TriggerMatchType;
 
 namespace pv {
 namespace views {
@@ -83,6 +86,7 @@ const QColor AnalogSignal::ThresholdColor = QColor(0, 0, 0, 30 * 256 / 100);
 const QColor AnalogSignal::ThresholdColorLo = QColor(255, 0, 0, 8 * 256 / 100);
 const QColor AnalogSignal::ThresholdColorNe = QColor(0,   0, 0, 10 * 256 / 100);
 const QColor AnalogSignal::ThresholdColorHi = QColor(0, 255, 0, 8 * 256 / 100);
+const QColor AnalogSignal::TriggerColor = QColor(255, 0, 0, 30 * 256 / 100);
 
 const int64_t AnalogSignal::TracePaintBlockSize = 1024 * 1024;  // 4 MiB (due to float)
 const float AnalogSignal::EnvelopeThreshold = 64.0f;
@@ -241,6 +245,13 @@ void AnalogSignal::paint_back(QPainter &p, ViewItemPaintParams &pp)
 		Signal::paint_back(p, pp);
 		paint_axis(p, pp, get_visual_y());
 	}
+	if(trigger_match_) {
+		// draw analog trigger line
+		const int visual_y = get_visual_y();
+		const double y = visual_y - trigger_value_ * scale_;
+		p.setPen(QPen(TriggerColor, 1, Qt::DashLine));
+		p.drawLine(QLineF(pp.left(), y, pp.right(), y));
+	}
 }
 
 void AnalogSignal::paint_mid(QPainter &p, ViewItemPaintParams &pp)
@@ -330,8 +341,7 @@ void AnalogSignal::paint_fore(QPainter &p, ViewItemPaintParams &pp)
 			paint_hover_marker(p);
 	}
 
-	if ((display_type_ == DisplayConverted) || (display_type_ == DisplayBoth))
-		LogicSignal::paint_fore(p, pp);
+	LogicSignal::paint_fore(p, pp);
 }
 
 void AnalogSignal::paint_grid(QPainter &p, int y, int left, int right)
@@ -893,8 +903,68 @@ void AnalogSignal::populate_popup_form(QWidget *parent, QFormLayout *form)
 	connect(display_type_cb_, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(on_display_type_changed(int)));
 
+	// Trigger settings
+	const vector<int32_t> trig_types = get_trigger_types();
+
+	if (!trig_types.empty()) {
+		QDoubleSpinBox* sb = new QDoubleSpinBox(parent);
+		trigger_bar_ = new QToolBar(parent);
+		init_trigger_actions(trigger_bar_);
+		trigger_bar_->addAction(trigger_none_);
+		trigger_none_->setChecked(!trigger_match_);
+
+		for (auto type_id : trig_types) {
+			const TriggerMatchType *const type =
+				TriggerMatchType::get(type_id);
+			QAction *const action = action_from_trigger_type(type);
+			trigger_bar_->addAction(action);
+			action->setChecked(trigger_match_ == type);
+		}
+
+		// Only allow triggers to be changed when we're stopped
+		if (session_.get_capture_state() != Session::Stopped)
+			for (QAction* action : trigger_bar_->findChildren<QAction*>())  // clazy:exclude=range-loop
+				action->setEnabled(false);
+
+		sb->setRange(-1e9, 1e9);
+		sb->setDecimals(4);
+		sb->setValue(trigger_value_);
+		connect(sb, SIGNAL(valueChanged(double)), this, SLOT(on_trigger_value(double)));
+		form->addRow(tr("Trigger value"), sb);
+		form->addRow(tr("Trigger"), trigger_bar_);
+	}
 	// Update the conversion widget contents and states
 	update_conversion_widgets();
+}
+
+QAction* AnalogSignal::action_from_trigger_type(const TriggerMatchType *type)
+{
+	QAction *action;
+
+	action = trigger_none_;
+	if (type) {
+		switch (type->id()) {
+		case SR_TRIGGER_RISING:
+			action = trigger_rising_;
+			break;
+		case SR_TRIGGER_FALLING:
+			action = trigger_falling_;
+			break;
+		case SR_TRIGGER_EDGE:
+			action = trigger_change_;
+			break;
+		case SR_TRIGGER_OVER:
+			action = trigger_over_;
+			break;
+		case SR_TRIGGER_UNDER:
+			action = trigger_under_;
+			break;
+		default:
+			break;
+		}
+	}
+
+	return action;
 }
 
 void AnalogSignal::hover_point_changed(const QPoint &hp)

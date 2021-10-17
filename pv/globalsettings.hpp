@@ -64,6 +64,7 @@ public:
 	static const QString Key_View_ColoredBG;
 	static const QString Key_View_StickyScrolling;
 	static const QString Key_View_AlignScrollOnTrigger;
+	static const QString Key_View_ScrollTriggerPosition;
 	static const QString Key_View_AllowVerticalDragging;
 	static const QString Key_View_ShowSamplingPoints;
 	static const QString Key_View_FillSignalHighAreas;

@@ -57,6 +57,7 @@ private:
 	static const QColor ThresholdColorLo;
 	static const QColor ThresholdColorNe;
 	static const QColor ThresholdColorHi;
+	static const QColor TriggerColor;
 
 	static const int64_t TracePaintBlockSize;
 	static const float EnvelopeThreshold;
@@ -145,6 +146,7 @@ private:
 
 protected:
 	void populate_popup_form(QWidget *parent, QFormLayout *form);
+	virtual QAction* action_from_trigger_type(const sigrok::TriggerMatchType *type);
 
 	virtual void hover_point_changed(const QPoint &hp);
 

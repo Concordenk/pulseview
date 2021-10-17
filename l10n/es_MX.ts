@@ -420,7 +420,7 @@ A human-readable form has been saved to disk and was written to the log. You may
     </message>
     <message>
         <location filename="../pv/dialogs/settings.cpp" line="153"/>
-        <location filename="../pv/dialogs/settings.cpp" line="410"/>
+        <location filename="../pv/dialogs/settings.cpp" line="418"/>
         <source>Decoders</source>
         <translation>Decodificadores</translation>
     </message>
@@ -504,7 +504,7 @@ A human-readable form has been saved to disk and was written to the log. You may
         <translation>Mantenga siempre las muestras más &amp;recientes en el borde derecho durante la captura</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="332"/>
+        <location filename="../pv/dialogs/settings.cpp" line="340"/>
         <source>Show data &amp;sampling points</source>
         <translation>Mostrar puntos de datos &amp;sampleados</translation>
     </message>
@@ -524,183 +524,193 @@ A human-readable form has been saved to disk and was written to the log. You may
     </message>
     <message>
         <location filename="../pv/dialogs/settings.cpp" line="328"/>
-        <source>Allow &amp;vertical dragging in the view area</source>
+        <source> %</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pv/dialogs/settings.cpp" line="332"/>
+        <source>Window trigger position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pv/dialogs/settings.cpp" line="336"/>
+        <source>Allow &amp;vertical dragging in the view area</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pv/dialogs/settings.cpp" line="344"/>
         <source>Fill &amp;high areas of logic signals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="343"/>
+        <location filename="../pv/dialogs/settings.cpp" line="351"/>
         <source>Color to fill high areas of logic signals with</source>
         <translation>Color para llenar áreas altas de señales lógicas</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="347"/>
+        <location filename="../pv/dialogs/settings.cpp" line="355"/>
         <source>Show analog minor grid in addition to div grid</source>
         <translation>Mostrar cuadrícula menor analogíca además de cuadrícula por div</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="351"/>
+        <location filename="../pv/dialogs/settings.cpp" line="359"/>
         <source>Highlight mouse cursor using a vertical marker line</source>
         <translation>Resalte el cursor del mouse usando una línea de marcador vertical</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="355"/>
-        <location filename="../pv/dialogs/settings.cpp" line="381"/>
-        <location filename="../pv/dialogs/settings.cpp" line="390"/>
+        <location filename="../pv/dialogs/settings.cpp" line="363"/>
+        <location filename="../pv/dialogs/settings.cpp" line="389"/>
+        <location filename="../pv/dialogs/settings.cpp" line="398"/>
         <source> pixels</source>
         <translation> píxeles</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="360"/>
+        <location filename="../pv/dialogs/settings.cpp" line="368"/>
         <source>Maximum distance from edges before markers snap to them</source>
         <translation>Distancia máxima desde los bordes antes de que los marcadores se ajusten a ellos</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="367"/>
+        <location filename="../pv/dialogs/settings.cpp" line="375"/>
         <source>Color to fill cursor area with</source>
         <translation>Color para llenar el área del cursor</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="370"/>
+        <location filename="../pv/dialogs/settings.cpp" line="378"/>
         <source>None</source>
         <translation>Ninguna</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="371"/>
+        <location filename="../pv/dialogs/settings.cpp" line="379"/>
         <source>Background</source>
         <translation>Fondo</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="372"/>
+        <location filename="../pv/dialogs/settings.cpp" line="380"/>
         <source>Dots</source>
         <translation>Puntos</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="377"/>
+        <location filename="../pv/dialogs/settings.cpp" line="385"/>
         <source>Conversion threshold display mode (analog traces only)</source>
         <translation>Modo de visualización del umbral de conversión (solo trazas analógicas)</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="386"/>
+        <location filename="../pv/dialogs/settings.cpp" line="394"/>
         <source>Default analog trace div height</source>
         <translation>Altura de div de trazo análogo por defecto</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="395"/>
+        <location filename="../pv/dialogs/settings.cpp" line="403"/>
         <source>Default logic trace height</source>
         <translation>Altura de trazo lógico por defecto</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="418"/>
+        <location filename="../pv/dialogs/settings.cpp" line="426"/>
         <source>Allow configuration of &amp;initial signal state</source>
         <translation>Permitir configuración de estado de señal &amp;inicial</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="422"/>
+        <location filename="../pv/dialogs/settings.cpp" line="430"/>
         <source>Always show all &amp;rows, even if no annotation is visible</source>
         <translation>Mostrar siempre todas las &amp;filas, incluso si no hay ninguna anotación visible</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="430"/>
+        <location filename="../pv/dialogs/settings.cpp" line="438"/>
         <source>Annotation export format</source>
         <translation>Formato de exportación de anotaciones</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="431"/>
+        <location filename="../pv/dialogs/settings.cpp" line="439"/>
         <source>%s = sample range; %d: decoder name; %r: row name; %c: class name</source>
         <translation>%s = rango de muestra; %d: nombre del decodificador; %r: nombre de fila; %c: nombre de clase</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="434"/>
+        <location filename="../pv/dialogs/settings.cpp" line="442"/>
         <source>%1: longest annotation text; %a: all annotation texts; %q: use quotation marks</source>
         <translation>%1: texto de anotación más largo; %a: todos los textos de anotación; %q: use comillas</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="454"/>
+        <location filename="../pv/dialogs/settings.cpp" line="462"/>
         <source>%1&lt;br /&gt;&lt;a href=&quot;http://%2&quot;&gt;%2&lt;/a&gt;</source>
         <translation>%1&lt;br /&gt;&lt;a href=&quot;http://%2&quot;&gt;%2&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="455"/>
+        <location filename="../pv/dialogs/settings.cpp" line="463"/>
         <source>GNU GPL, version 3 or later</source>
         <translation>GNU GPL, versión 3 o posterior</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="466"/>
+        <location filename="../pv/dialogs/settings.cpp" line="474"/>
         <source>Versions, libraries and features:</source>
         <translation>Versiones, librerías y características:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="473"/>
+        <location filename="../pv/dialogs/settings.cpp" line="481"/>
         <source>Firmware search paths:</source>
         <translation>Rutas de búsqueda de firmware:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="480"/>
+        <location filename="../pv/dialogs/settings.cpp" line="488"/>
         <source>Protocol decoder search paths:</source>
         <translation>Ruta de búsqueda del decodificador de protocolo:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="483"/>
+        <location filename="../pv/dialogs/settings.cpp" line="491"/>
         <source>&lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;(Note: Set environment variable SIGROKDECODE_DIR to add a custom directory)&lt;/td&gt;&lt;/tr&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="488"/>
+        <location filename="../pv/dialogs/settings.cpp" line="496"/>
         <source>Supported hardware drivers:</source>
         <translation>Drivers de hardware soportados:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="495"/>
+        <location filename="../pv/dialogs/settings.cpp" line="503"/>
         <source>Supported input formats:</source>
         <translation>Formatos de entrada soportados:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="502"/>
+        <location filename="../pv/dialogs/settings.cpp" line="510"/>
         <source>Supported output formats:</source>
         <translation>Formatos de salida soportados:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="510"/>
+        <location filename="../pv/dialogs/settings.cpp" line="518"/>
         <source>Supported protocol decoders:</source>
         <translation>Decodificadores de protocolo soportados:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="518"/>
+        <location filename="../pv/dialogs/settings.cpp" line="526"/>
         <source>Available Translations:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="566"/>
+        <location filename="../pv/dialogs/settings.cpp" line="574"/>
         <source>Log level:</source>
         <translation>Nivel de log:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="571"/>
+        <location filename="../pv/dialogs/settings.cpp" line="579"/>
         <source> lines</source>
         <translation> líneas</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="580"/>
+        <location filename="../pv/dialogs/settings.cpp" line="588"/>
         <source>Length of background buffer:</source>
         <translation>Longitud del búfer de fondo:</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="586"/>
+        <location filename="../pv/dialogs/settings.cpp" line="594"/>
         <source>&amp;Save to File</source>
         <translation>&amp;Guardar en archivo</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="593"/>
+        <location filename="../pv/dialogs/settings.cpp" line="601"/>
         <source>&amp;Pop out</source>
         <translation>&amp;Pop out</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="662"/>
+        <location filename="../pv/dialogs/settings.cpp" line="670"/>
         <source>You selected a dark theme.
 Should I set the user-adjustable colors to better suit your choice?
 
@@ -708,7 +718,7 @@ Please keep in mind that PulseView may need a restart to display correctly.</sou
         <translation>Seleccionaste el tema obscuro.\nDebería de establecer los colores ajustables por el usuario que mejor se ajustan a tu elección?\n\nPor favor ten en cuenta que Pulseview tal vez se tenga que reiniciar para mostrar correctamente.</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="668"/>
+        <location filename="../pv/dialogs/settings.cpp" line="676"/>
         <source>You selected a bright theme.
 Should I set the user-adjustable colors to better suit your choice?
 
@@ -716,37 +726,37 @@ Please keep in mind that PulseView may need a restart to display correctly.</sou
         <translation>Seleccionaste el tema brillante.\nDebería de establecer los colores ajustables por el usuario que mejor se ajustan a tu elección?\n\nPor favor ten en cuenta que Pulseview tal vez se tenga que reiniciar para mostrar correctamente.</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="839"/>
+        <location filename="../pv/dialogs/settings.cpp" line="853"/>
         <source>Save Log</source>
         <translation>Guardar log</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="839"/>
+        <location filename="../pv/dialogs/settings.cpp" line="853"/>
         <source>Log Files (*.txt *.log);;All Files (*)</source>
         <translation>Archivos de log (*.txt *.log);;Todos los archivos (*)</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="851"/>
+        <location filename="../pv/dialogs/settings.cpp" line="865"/>
         <source>Success</source>
         <translation>Éxito</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="851"/>
+        <location filename="../pv/dialogs/settings.cpp" line="865"/>
         <source>Log saved to %1.</source>
         <translation>Log guardado en %1.</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="861"/>
+        <location filename="../pv/dialogs/settings.cpp" line="875"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="861"/>
+        <location filename="../pv/dialogs/settings.cpp" line="875"/>
         <source>File %1 could not be written to.</source>
         <translation>No se pudo escribir en el archivo%1.</translation>
     </message>
     <message>
-        <location filename="../pv/dialogs/settings.cpp" line="875"/>
+        <location filename="../pv/dialogs/settings.cpp" line="889"/>
         <source>%1 Log</source>
         <translation>%1 Log</translation>
     </message>
@@ -1240,84 +1250,94 @@ Please keep in mind that PulseView may need a restart to display correctly.</sou
 <context>
     <name>pv::views::trace::AnalogSignal</name>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="802"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="812"/>
         <source>Number of pos vertical divs</source>
         <translation>Número de divisiones verticales pos</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="810"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="820"/>
         <source>Number of neg vertical divs</source>
         <translation>Número de divisiones verticales neg</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="815"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="825"/>
         <source> pixels</source>
         <translation> píxeles</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="819"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="829"/>
         <source>Div height</source>
         <translation>Altura de div</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="837"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="847"/>
         <source>V/div</source>
         <translation>V/div</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="841"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="851"/>
         <source>Vertical resolution</source>
         <translation>Resolución vertical</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="850"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="860"/>
         <source>Autoranging</source>
         <translation>Autorango</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="855"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="865"/>
         <source>none</source>
         <translation>ninguna</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="857"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="867"/>
         <source>to logic via threshold</source>
         <translation>a nivel lógico a partir de umbral</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="859"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="869"/>
         <source>to logic via schmitt-trigger</source>
         <translation>a nivel lógico a partir de schmitt trigger</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="865"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="875"/>
         <source>Conversion</source>
         <translation>Conversión</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="874"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="884"/>
         <source>Conversion threshold(s)</source>
         <translation>Umbral(es) de conversión</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="884"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="894"/>
         <source>analog</source>
         <translation>análogo</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="885"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="895"/>
         <source>converted</source>
         <translation>convertida</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="886"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="896"/>
         <source>analog+converted</source>
         <translation>Analógico+convertido</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/analogsignal.cpp" line="891"/>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="901"/>
         <source>Show traces for</source>
         <translation>Mostrar trazos para</translation>
+    </message>
+    <message>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="933"/>
+        <source>Trigger value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pv/views/trace/analogsignal.cpp" line="934"/>
+        <source>Trigger</source>
+        <translation type="unfinished">Trigger</translation>
     </message>
 </context>
 <context>
@@ -1494,47 +1514,57 @@ Please keep in mind that PulseView may need a restart to display correctly.</sou
 <context>
     <name>pv::views::trace::LogicSignal</name>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="423"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="429"/>
         <source>No trigger</source>
         <translation>Sin trigger</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="428"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="434"/>
         <source>Trigger on rising edge</source>
         <translation>Trigger en flanco de subida</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="433"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="439"/>
         <source>Trigger on high level</source>
         <translation>Trigger en nivel alto</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="438"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="444"/>
         <source>Trigger on falling edge</source>
         <translation>Trigger en flanco de bajada</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="443"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="449"/>
         <source>Trigger on low level</source>
         <translation>Trigger en nivel bajo</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="448"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="454"/>
         <source>Trigger on rising or falling edge</source>
         <translation>Trigger en flanco de subida o bajada</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="535"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="459"/>
+        <source>Trigger OVER value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="464"/>
+        <source>Trigger UNDER value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="556"/>
         <source> pixels</source>
         <translation> pixeles</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="539"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="560"/>
         <source>Trace height</source>
         <translation>Altura del trazo</translation>
     </message>
     <message>
-        <location filename="../pv/views/trace/logicsignal.cpp" line="563"/>
+        <location filename="../pv/views/trace/logicsignal.cpp" line="584"/>
         <source>Trigger</source>
         <translation>Trigger</translation>
     </message>
